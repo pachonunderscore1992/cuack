@@ -52,6 +52,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String apiKey = this.getIntent().getStringExtra("apiKey");
+
+        System.out.println(apiKey);
+
         getSupportActionBar().hide();
         ACTION_VAR_HEIGHT =  getSupportActionBar().getHeight();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -127,8 +132,7 @@ public class MainActivity extends ActionBarActivity {
             //Creamos la clase Vibrator
            /// Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
            // v.vibrate(pattern, -1);
-            postLogin log = new postLogin();
-            log.execute();
+
             return rootView;
         }
         float currentDegree = 0;
@@ -214,6 +218,7 @@ public class MainActivity extends ActionBarActivity {
             Location loc=locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             System.out.println(String.valueOf(loc.getLatitude()));
         }
+
         private void getListproviders(){
             locManager=(LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
             List<String> listaProviders=locManager.getAllProviders();
@@ -229,6 +234,7 @@ public class MainActivity extends ActionBarActivity {
             req.setAltitudeRequired(true);
             return req;
         }
+
         private boolean isGPSAviable(){
             locManager =(LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
             if(!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
@@ -329,8 +335,6 @@ public class MainActivity extends ActionBarActivity {
                             case 2: mPaint.setColor(Color.RED);break;  //zombie
                             case 3: mPaint.setColor(Color.BLUE);break; //PALADIN
                         }
-
-
                         canvas.drawText(person[i].name,person[i].px,person[i].py-10,mPaint);
                         canvas.drawCircle(person[i].px,person[i].py, 6f, mPaint);
                     }
@@ -383,77 +387,6 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-
-
-        public class postLogin extends AsyncTask<String,Void,String[]> {
-            private final String LOG_TAG = postLogin.class.getSimpleName();
-            public InputStream is = null;
-            String forecastJsonStr;
-            @Override
-            protected String[] doInBackground(String... params) {
-                HttpURLConnection urlConnection = null;
-                BufferedReader reader = null;
-                StringBuilder sb = new StringBuilder();
-                try {
-                    final String FORECAST_BASE_URL = "http://one.hackiot.com:8080/riot-core-services/api/user/login";
-                    Uri buildURI = Uri.parse(FORECAST_BASE_URL).buildUpon().build();
-                    URL url = new URL(buildURI.toString());
-                    // Create the request to OpenWeatherMap, and open the connection
-                    urlConnection = (HttpURLConnection) url.openConnection();
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("Accept","application/json");
-                    JSONObject logi = new JSONObject();
-                    logi.put("username","team11");
-                    logi.put("password","patilla");
-                    urlConnection.connect();
-                    OutputStreamWriter out = new   OutputStreamWriter(urlConnection.getOutputStream());
-                    out.write(logi.toString());
-                    out.close();
-                    int HttpResult =urlConnection.getResponseCode();
-                    if(HttpResult == HttpURLConnection.HTTP_OK){
-                        BufferedReader br = new BufferedReader(new InputStreamReader(
-                                urlConnection.getInputStream(),"utf-8"));
-                        String line = null;
-                        while ((line = br.readLine()) != null) {
-                            sb.append(line + "\n");
-                        }
-                        br.close();
-                        System.out.println(""+sb.toString());
-
-                    }else{
-                        System.out.println(urlConnection.getResponseMessage());
-                    }
-
-
-                } catch (IOException e) {
-                    Log.e("PlaceholderFragment", "Error ", e);
-                    forecastJsonStr = null;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } finally{
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
-                    if (reader != null) {
-                        try {
-                            reader.close();
-                        } catch (final IOException e) {
-                            Log.e("PlaceholderFragment", "Error closing stream", e);
-                        }
-                    }
-                }
-                return  null;
-            }
-
-            @Override
-            protected void onPostExecute(String[] strings) {
-                if(strings != null){
-
-                }
-                super.onPostExecute(strings);
-            }
-        }
 
         public class WebAppInterface {
             Context mContext;

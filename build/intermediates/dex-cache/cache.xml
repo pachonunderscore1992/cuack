@@ -2,60 +2,46 @@
 <items version="2" >
 
     <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="D:\cuack\app\libs\jersey-media-json-jackson-2.8.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-f3235cf6cb4209a4d3cc75e3c5272764fa1c3be0.jar" />
+        sha1="7f4918a425b31a87a1a1c216dd033e7fecab5cec">
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\jersey-media-json-jackson-2.8-282ea613d6eb67cae6ca5532290678f31dda5c46.jar" />
     </item>
     <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\pre-dexed\debug\classes-b0edd540e08088d1b32a9224e0e1fa3ea80c6d0e.jar" />
-    </item>
-    <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="D:\cuack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\pre-dexed\debug\classes-81a901cadc071af4650266dd0c9574a3c899f022.jar" />
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\classes-ac5993ed16a16597f2fc441aae4f9600ac946ff9.jar" />
     </item>
     <item
-        jar="E:\SOFTWARE\Android\Eclipse_Android\android_sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="D:\cuack\app\libs\jersey-client-2.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6a419dd4f9ae854c0074d99a86287006b09fc3c7">
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\jersey-client-2.8-2dc5bf8dfe8eee3c506af5d07b1c1d3ccd8dd3f8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ayrton\AppData\Local\Android\sdk2\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-7d39a11b61ca61089624c8be2bcd6c49d96bd4d7.jar" />
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-27bcaaff393e811db41c55ea814280dc2cba20f5.jar" />
     </item>
     <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="D:\cuack\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\pre-dexed\debug\classes-8b6a4990e1470a417a177b821cec062e1f6190a8.jar" />
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\classes-01a738da2d9c31209356fc36a654b39aba324f71.jar" />
     </item>
     <item
-        jar="C:\Users\Emilio-Emilio\.gradle\caches\modules-2\files-2.1\javax.ws.rs\javax.ws.rs-api\2.0.1\104e9c2b5583cfcfeac0402316221648d6d8ea6b\javax.ws.rs-api-2.0.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="104e9c2b5583cfcfeac0402316221648d6d8ea6b">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\pre-dexed\debug\javax.ws.rs-api-2.0.1-cd08c02e832d5c23c7c1f20fbe6b6cfc79cfa783.jar" />
-    </item>
-    <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\HackathonRiot\app\build\intermediates\pre-dexed\debug\classes-072431731c2b03efd2ea2c8bbe66f548915da317.jar" />
-    </item>
-    <item
-        jar="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="D:\cuack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="E:\Usuarios\Emilio\Documents\Android_Projects\cuack\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-bfb61dbb9ebc45aaa5615e843eaeddbeaf2dc3af.jar" />
+        <dex dex="D:\cuack\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-22bfa9e5e385b2e96dd795fee62592cbc9ef9ad8.jar" />
     </item>
 
 </items>
