@@ -14,8 +14,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -32,30 +30,20 @@ import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 //import android.webkit.JavascriptInterface;
 
-public class MainActivity extends ActionBarActivity {
+public class codeRoadActivity extends ActionBarActivity {
     public static int ACTION_VAR_HEIGHT = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String apiKey = this.getIntent().getStringExtra("apiKey");
+        //String apiKey = this.getIntent().getStringExtra("apiKey");
 
-        System.out.println(apiKey);
+        //System.out.println(apiKey);
 
         getSupportActionBar().hide();
         ACTION_VAR_HEIGHT =  getSupportActionBar().getHeight();
@@ -116,8 +104,8 @@ public class MainActivity extends ActionBarActivity {
             myFrame = (FrameLayout)rootView.findViewById(R.id.myFrameLayout);
             myMapa = new MapTag(rootView.getContext());
             Log.v("TAMANOS DEL FRAME: ","x = "+getActivity().getWindowManager().getDefaultDisplay().getWidth() +"  y = "+getActivity().getWindowManager().getDefaultDisplay().getHeight());
-            //myMapa.setMaxis((float)(getActivity().getWindowManager().getDefaultDisplay().getWidth()),(float)(getActivity().getWindowManager().getDefaultDisplay().getHeight()-MainActivity.ACTION_VAR_HEIGHT-30));
-            float height = (float)getActivity().getWindowManager().getDefaultDisplay().getHeight()-MainActivity.ACTION_VAR_HEIGHT;
+            //myMapa.setMaxis((float)(getActivity().getWindowManager().getDefaultDisplay().getWidth()),(float)(getActivity().getWindowManager().getDefaultDisplay().getHeight()-codeRoadActivity.ACTION_VAR_HEIGHT-30));
+            float height = (float)getActivity().getWindowManager().getDefaultDisplay().getHeight()- codeRoadActivity.ACTION_VAR_HEIGHT;
             float width = (float) getActivity().getWindowManager().getDefaultDisplay().getWidth();
             float maxSize = height > width ? height:width;
             myMapa.setMaxis(width,height);
@@ -153,16 +141,16 @@ public class MainActivity extends ActionBarActivity {
         public void escucharSensores(View rootV){
             if(sensorOrientacion!=null){
                 mySensorManager.registerListener(this,sensorOrientacion, 20000);
-                Toast.makeText(rootV.getContext(),"Hay TYPE_ORIENTATION",Toast.LENGTH_LONG).show();
+                //Toast.makeText(rootV.getContext(),"Hay TYPE_ORIENTATION",Toast.LENGTH_LONG).show();
             }else{
-                Toast.makeText(rootV.getContext(),"No hay TYPE_ORIENTATION",Toast.LENGTH_LONG).show();
+                //Toast.makeText(rootV.getContext(),"No hay TYPE_ORIENTATION",Toast.LENGTH_LONG).show();
             }
 
             if(sensorAcelerometro!=null){
                 mySensorManager.registerListener(this,sensorAcelerometro, 20000);
-                Toast.makeText(rootV.getContext(),"Hay TYPE_ACELEROMETRO",Toast.LENGTH_LONG).show();
+                //Toast.makeText(rootV.getContext(),"Hay TYPE_ACELEROMETRO",Toast.LENGTH_LONG).show();
             }else{
-                Toast.makeText(rootV.getContext(),"No hay TYPE_ACELEROMETRO",Toast.LENGTH_LONG).show();
+                //Toast.makeText(rootV.getContext(),"No hay TYPE_ACELEROMETRO",Toast.LENGTH_LONG).show();
             }
         }
         public void noescucharSensores(View rootV){

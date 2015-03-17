@@ -50,7 +50,7 @@ public class LoginActivity extends Activity {
 
              @Override
              public void onClick(View arg0) {
-//                 Intent nextScreen = new Intent(getApplicationContext(), MainActivity.class);
+//                 Intent nextScreen = new Intent(getApplicationContext(), codeRoadActivity.class);
                  String username = inputName.getText().toString();
                  String password = inputPassword.getText().toString();
 
@@ -63,11 +63,12 @@ public class LoginActivity extends Activity {
 //
 //                 task.execute("http://one.hackiot.com:8080/riot-core-services/api/user/login");
 
-                 Toast.makeText(getApplicationContext(), "Conectandose", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(getApplicationContext(), "Conectandose", Toast.LENGTH_SHORT).show();
 //                 Log.e("n", inputName.getText() + "." + inputPassword.getText());
 
-                 String message = null;
-                 String api_key = null;
+                 postLogin login_task = new postLogin();
+                         login_task.execute(username,password);
+/*
                  if(username.equals("zombie") && password.equals("zombie")){
                      message = "Bienvenido " + username;
                      api_key = "39bcb851cb7feff61f320308ffcb0fd01ba3747b2565efc54ba12f2e15f2e67e";
@@ -83,42 +84,32 @@ public class LoginActivity extends Activity {
                  } else {
                      message = "Usuario y password incorrectos";
                  }
-
-                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+*/
+/*
                  if(api_key != null){
-                     Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                     //Intent i = new Intent(getApplicationContext(),codeRoadActivity.class);
+                     Intent i = new Intent(getApplicationContext(),SelectPersonActivity.class);
                      i.putExtra("apiKey",api_key);
                      startActivity(i);
-                 }
+                 }*/
              }
          });
 
     }
 
-    public class postLogin extends AsyncTask<Object, Void, String> {
+    public class postLogin extends AsyncTask<String, Void, String> {
+        private final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
         private final String LOG_TAG = postLogin.class.getSimpleName();
         public InputStream is = null;
-        String forecastJsonStr;
-
-        String username;
-        String password;
-
-        public postLogin(String username,String password) {
-            this.username = username;
-            this.password = password;
-        }
-
-//        @Override
-//        protected void onPreExecute() {
-//            this.dialog.setMessage("Cargando"
-////                    context.getResources().getString(R.string.loading)
-//            );
-//            this.dialog.show();
-//
-//        }
 
         @Override
-        protected String doInBackground(Object... objects) {
+        protected void onPreExecute() {
+            dialog.setMessage("Ingresando");
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
             StringBuilder sb = new StringBuilder();
@@ -132,8 +123,10 @@ public class LoginActivity extends Activity {
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestProperty("Accept","application/json");
                 JSONObject logi = new JSONObject();
-                logi.put("username",username);
-                logi.put("password",password);
+                Log.v("LOGIN_PARAMS USER = ",strings[0]);
+                Log.v("LOGIN_PARAMS PASS = ",strings[1]);
+                logi.put("username",strings[0]);
+                logi.put("password",strings[0]);
                 urlConnection.connect();
                 OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
                 out.write(logi.toString());
@@ -148,17 +141,15 @@ public class LoginActivity extends Activity {
                     }
                     br.close();
                     System.out.println(""+sb.toString());
+                    Log.v("REQUEST_LOGIN",sb.toString());
                     return (String )sb.toString();
                 }else{
                     System.out.println(urlConnection.getResponseMessage());
+                    Log.v("REQUEST_LOGIN","No se pudo conectar");
                     return (String)urlConnection.getResponseMessage().toString();
-
                 }
-
-
             } catch (IOException e) {
                 Log.e("PlaceholderFragment", "Error ", e);
-                forecastJsonStr = null;
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally{
@@ -173,14 +164,29 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
+            Log.v("REQUEST_LOGIN","No se pudo conectar");
             return  null;
         }
 
+
         @Override
         protected void onPostExecute(String result) {
-//            if (dialog != null && dialog.isShowing())
-//                dialog.dismiss();
+            if (dialog != null && dialog.isShowing())
+                dialog.dismiss();
               System.out.println("result " +result);
+            try {
+                getApiKey(result);
+            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(),"No se pudo conectar",Toast.LENGTH_LONG).show();
+            }
+        }
+
+        public void getApiKey(String json) throws JSONException{
+            JSONObject myJ = new JSONObject(json);
+            GLOBALS.API_KEY = myJ.getString("apiKey");
+            Intent inte = new Intent(getApplicationContext(),SelectPersonActivity.class);
+            startActivity(inte);
+            finish();
         }
     }
 
@@ -299,7 +305,7 @@ public class LoginActivity extends Activity {
 
                 // If the JSON is returned successfully and well formatted, send the
                 // JSON "data" as String Extra "json" to SecondActivity
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, codeRoadActivity.class);
                 intent.putExtra("apiKey", json.getString("apiKey").toString());
                 startActivity(intent);
             } catch (JSONException e) {
